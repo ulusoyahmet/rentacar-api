@@ -1,0 +1,19 @@
+﻿@model List<GetTagByBlogIdDto>
+
+<div class="sidebar-box ftco-animate">
+    <h3>Tag Cloud</h3>
+    <div class="tagcloud">
+        @foreach (var item in Model)
+        {
+            <a href="#" class="tag-cloud-link">@item.Name</a>
+        }
+        <a href="#" class="tag-cloud-link">cars</a>
+        <a href="#" class="tag-cloud-link">emission</a>
+        <a href="#" class="tag-cloud-link">formula 1</a>
+        <a href="#" class="tag-cloud-link">racing</a>
+        <a href="#" class="tag-cloud-link">hatchback</a>
+        <a href="#" class="tag-cloud-link">suv</a>
+        <a href="#" class="tag-cloud-link">travel</a>
+        <a href="#" class="tag-cloud-link">rent-a-car</a>
+    </div>
+</div>
