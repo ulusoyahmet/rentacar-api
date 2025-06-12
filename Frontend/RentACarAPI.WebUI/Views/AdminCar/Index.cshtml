@@ -1,0 +1,79 @@
+﻿@model List<ResultCarWithBrandsDto>
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/AdminLayout/Index.cshtml";
+	int count = 1;
+}
+
+<div class="row">
+	@* <div class="col-12"> *@
+	@*     <div class="page-title-box d-flex align-items-center justify-content-between"> *@
+
+	@*         <div class="page-title-right"> *@
+	@*             <ol class="breadcrumb m-0"> *@
+	@*                 <li class="breadcrumb-item"><a href="javascript: void(0);">Pages</a></li> *@
+	@*                 <li class="breadcrumb-item active">Cars</li> *@
+	@*             </ol> *@
+	@*         </div> *@
+	@*     </div> *@
+	@* </div> *@
+
+	<div class="col-xl-12">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Car List</h4>
+				<p class="card-subtitle mb-4">
+					Use table to view cars, delete cars and navigating to create and update forms.
+				</p>
+				<div class="table-responsive">
+					<table class="table mb-0">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Brand</th>
+								<th>Model</th>
+								<th>Km</th>
+								<th>Transmission</th>
+								<th>Update</th>
+								<th>Delete</th>
+								<th>Details</th>
+								<th>See in Page</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (var item in Model)
+							{
+								<tr>
+									<th scope="row">@count</th>
+									<td>@item.brandName</td>
+									<td>@item.model</td>
+									<td>@item.km</td>
+									<td>@item.transmission</td>
+									<td>
+										<a href="/AdminCar/UpdateCar/@item.carID" type="button" class="btn btn-outline-warning waves-effect waves-light">Update</a>
+									</td>
+									<td>
+										<a href="/AdminCar/RemoveCar/@item.carID" type="button" class="btn btn-outline-danger waves-effect waves-light">Delete</a>
+									</td>
+									<td>
+										<a href="/AdminCar/CarDetails/@item.carID type="button" class="btn btn-outline-info waves-effect waves-light">Details</a>
+									</td>
+									<td>
+										<a href="/Car/CarDetail/@item.carID type="button" class="btn btn-outline-dark waves-effect waves-light">Details</a>
+									</td>
+								</tr>
+								count++;
+							}
+						</tbody>
+					</table>
+					<a href="/AdminCar/CreateCar" type="button" class="btn btn-outline-secondary waves-effect waves-light">New Car</a>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+</div>
+
