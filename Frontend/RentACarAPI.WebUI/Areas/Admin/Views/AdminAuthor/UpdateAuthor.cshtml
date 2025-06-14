@@ -1,0 +1,44 @@
+﻿@model UpdateAuthorDto
+
+@{
+    ViewData["Title"] = "UpdateAuthor";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="row">
+	<div class="col-xl-12">
+		<div class="card">
+			<div class="card-body">
+
+				<h4 class="card-title">Update Author(@Model.AuthorID)</h4>
+				<p class="card-subtitle mb-4">Please fullfill all the fields with required information.</p>
+
+				<form method="post">
+					<input type="hidden" asp-for="AuthorID" />
+
+					<div class="form-group">
+						<label for="InputTitle">Name</label>
+						<input type="text" class="form-control" id="InputTitle" asp-for="Name" placeholder="Name">
+					</div>
+					<div class="form-group">
+						<label for="InputDescription">Description</label>
+						<input type="text" class="form-control" id="InputDescription" asp-for="Description" placeholder="Description">
+					</div>
+					<div class="form-group">
+						<label for="imageUrl">Image Url</label>
+						<input type="text" class="form-control" id="imageUrl" asp-for="ImageUrl" placeholder="Image Url">
+					</div>
+
+					<button type="submit" class="btn btn-primary waves-effect waves-light">Update</button>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+

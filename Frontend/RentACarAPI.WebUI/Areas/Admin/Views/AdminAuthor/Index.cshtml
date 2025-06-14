@@ -1,0 +1,90 @@
+﻿@model List<ResultAuthorDto>
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/AdminLayout/Index.cshtml";
+	int count = 1;
+}
+
+<div class="row">
+	<div class="col-xl-12">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Car Author List</h4>
+				<p class="card-subtitle mb-4">
+					Use table to view car banners, delete car featuress and navigating to create and update forms.
+				</p>
+				<div class="table-responsive">
+					@if (Model.Any())
+					{
+						<table class="table mb-0">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Name</th>
+									<th>Description</th>
+									<th>Image Url</th>
+									<th>Update</th>
+									<th>Delete</th>
+									<th>Author's Blogs</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model)
+								{
+									<tr>
+										<th scope="row">@count</th>
+										<td><img class="rounded-circle" style="margin-right:5px;" src="@item.ImageUrl" width="50" height="50" /> @item.Name</td>
+										<td>@item.Description</td>
+										<td>@item.ImageUrl</td>
+										<td>
+											<a href="/Admin/AdminAuthor/UpdateAuthor/@item.AuthorID" type="button" class="btn btn-outline-warning waves-effect waves-light">Update</a>
+										</td>
+										<td>
+											<a href="/Admin/AdminAuthor/RemoveAuthor/@item.AuthorID" type="button" class="btn btn-outline-danger waves-effect waves-light">Delete</a>
+										</td>
+										<td>
+											<a href="/Admin/AdminAuthor/BlogsByAuthor/@item.AuthorID" type="button" class="btn btn-outline-danger waves-effect waves-light">Author's Blogs</a>
+										</td>
+
+									</tr>
+									count++;
+								}
+							</tbody>
+						</table>
+					}
+					else
+					{
+						<div class="card text-white bg-warning">
+							<div class="card-body">
+								<blockquote class="card-bodyquote mb-0">
+									<p>
+										There are no authors here yet.
+									</p>
+									<footer class="blockquote-footer text-white-50">
+										No Data in <cite title="Source Title">Authors</cite>
+									</footer>
+								</blockquote>
+							</div>
+						</div>
+					}
+
+					<a href="/Admin/AdminAuthor/CreateAuthor" type="button" class="btn btn-outline-secondary waves-effect waves-light">New Author</a>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+

@@ -6,18 +6,6 @@
 }
 
 <div class="row">
-	@* <div class="col-12"> *@
-	@*     <div class="page-title-box d-flex align-items-center justify-content-between"> *@
-
-	@*         <div class="page-title-right"> *@
-	@*             <ol class="breadcrumb m-0"> *@
-	@*                 <li class="breadcrumb-item"><a href="javascript: void(0);">Pages</a></li> *@
-	@*                 <li class="breadcrumb-item active">Cars</li> *@
-	@*             </ol> *@
-	@*         </div> *@
-	@*     </div> *@
-	@* </div> *@
-
 	<div class="col-xl-12">
 		<div class="card">
 			<div class="card-body">
@@ -37,7 +25,8 @@
 								<th>Update</th>
 								<th>Delete</th>
 								<th>Details</th>
-								<th>See in Page</th>
+								<th>Pricing</th>
+								<th>View in Page</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -59,7 +48,10 @@
 										<a href="/AdminCar/CarDetails/@item.carID type="button" class="btn btn-outline-info waves-effect waves-light">Details</a>
 									</td>
 									<td>
-										<a href="/Car/CarDetail/@item.carID type="button" class="btn btn-outline-dark waves-effect waves-light">Details</a>
+										<a href="/AdminCar/CarDetails/@item.carID type="button" class="btn btn-outline-dark waves-effect waves-light">Pricing</a>
+									</td>
+									<td>
+										<a href="/Car/CarDetail/@item.carID type="button" class="btn btn-outline-success waves-effect waves-light">View in Page</a>
 									</td>
 								</tr>
 								count++;

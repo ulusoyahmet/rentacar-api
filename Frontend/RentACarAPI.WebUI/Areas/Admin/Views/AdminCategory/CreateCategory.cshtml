@@ -1,0 +1,39 @@
+﻿@model CreateCategoryDto
+
+@{
+    ViewData["Title"] = "CreateCategory";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+
+
+
+
+<div class="row">
+	<div class="col-xl-12">
+		<div class="card">
+			<div class="card-body">
+
+				<h4 class="card-title">Add New Category</h4>
+				<p class="card-subtitle mb-4">Please fullfill all the fields with required information.</p>
+
+				<form method="post">
+					<div class="form-group">
+						<label for="InputTitle">Name</label>
+						<input type="text" class="form-control" id="InputTitle" asp-for="Name" placeholder="Name">
+					</div>
+
+					<button type="submit" class="btn btn-primary waves-effect waves-light">Create</button>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+

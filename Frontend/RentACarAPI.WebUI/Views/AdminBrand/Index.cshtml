@@ -1,0 +1,81 @@
+﻿@model List<ResultBrandDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+	int count = 1;
+}
+
+<div class="row">
+	<div class="col-xl-12">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Car Brand List</h4>
+				<p class="card-subtitle mb-4">
+					Use table to view car brands, delete car featuress and navigating to create and update forms.
+				</p>
+				<div class="table-responsive">
+					@if (Model.Any())
+					{
+						<table class="table mb-0">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Name</th>
+									<th>Update</th>
+									<th>Delete</th>
+									<th>Cars from the brand</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model)
+								{
+									<tr>
+										<th scope="row">@count</th>
+										<td>@item.name</td>
+										<td>
+											<a href="/AdminBrand/UpdateBrand/@item.brandID" type="button" class="btn btn-outline-warning waves-effect waves-light">Update</a>
+										</td>
+										<td>
+											<a href="/AdminBrand/RemoveBrand/@item.brandID" type="button" class="btn btn-outline-danger waves-effect waves-light">Delete</a>
+										</td>
+										<td>
+											<a href="/AdminBrand/CarList/@item.brandID" type="button" class="btn btn-outline-danger waves-effect waves-light">Cars from the brand</a>
+										</td>
+									</tr>
+									count++;
+								}
+							</tbody>
+						</table>
+					}
+					else
+					{
+						<div class="card text-white bg-warning">
+							<div class="card-body">
+								<blockquote class="card-bodyquote mb-0">
+									<p>
+										There are no brands here yet.
+									</p>
+									<footer class="blockquote-footer text-white-50">
+										No Data in <cite title="Source Title">Brands</cite>
+									</footer>
+								</blockquote>
+							</div>
+						</div>
+					}
+
+					<a href="/AdminBrand/CreateBrand" type="button" class="btn btn-outline-secondary waves-effect waves-light">New Brand</a>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+</div>
+
+
+
+
+

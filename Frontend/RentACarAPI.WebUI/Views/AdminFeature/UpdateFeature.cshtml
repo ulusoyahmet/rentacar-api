@@ -1,0 +1,32 @@
+﻿@model UpdateFeatureDto
+
+@{
+    ViewData["Title"] = "UpdateFeature";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="row">
+	<div class="col-xl-12">
+		<div class="card">
+			<div class="card-body">
+
+				<h4 class="card-title">Update Feature(@Model.FeatureID)</h4>
+				<p class="card-subtitle mb-4">Please fullfill all the fields with required information.</p>
+
+				<form method="post">
+					<input type="hidden" asp-for="FeatureID" />
+					
+					<div class="form-group">
+						<label for="name">Name</label>
+						<input type="text" class="form-control" id="name" asp-for="Name" placeholder="Feature">
+					</div>
+					
+					<button type="submit" class="btn btn-primary waves-effect waves-light">Update</button>
+				</form>
+
+			</div> <!-- end card-body-->
+		</div>
+	</div>
+</div>
+
+
