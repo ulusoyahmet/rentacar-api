@@ -1,4 +1,4 @@
-﻿@model List<RentACarAPI.Dto.BannerDtos.ResultBannerDto>
+﻿@model List<ResultBannerDto>
 
 @{
     ViewData["Title"] = "Index";
@@ -44,7 +44,7 @@
 											<a href="/Admin/AdminBanner/RemoveBanner/@item.BannerID" type="button" class="btn btn-outline-danger waves-effect waves-light">Delete</a>
 										</td>
 										<td>
-											<a href="/Admin/AdminBanner/RemoveBanner/@item.BannerID" type="button" class="btn btn-outline-dark waves-effect waves-light">Open Video</a>
+											<a href="@item.VideoUrl" type="button" class="btn btn-outline-dark waves-effect waves-light">Open Video</a>
 										</td>
 									</tr>
 								}

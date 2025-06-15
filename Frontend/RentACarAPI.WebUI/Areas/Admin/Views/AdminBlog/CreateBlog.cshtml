@@ -1,0 +1,57 @@
+﻿@model CreateBlogDto
+
+@{
+    ViewData["Title"] = "CreateBlog";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="row">
+	<div class="col-xl-12">
+		<div class="card">
+			<div class="card-body">
+
+				<h4 class="card-title">Add New Blog</h4>
+				<p class="card-subtitle mb-4">Please fullfill all the fields with required information.</p>
+
+				<form method="post">
+					<div class="form-group">
+						<label for="InputTitle">Title</label>
+						<input type="text" class="form-control" id="InputTitle" asp-for="Title" placeholder="Title">
+					</div>
+					<div class="form-group">
+						<label for="InputBody">Body</label>
+						<textarea class="form-control" asp-for="Body" rows="5" placeholder="Blog content here..."></textarea>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputAuthor">Author</label>
+						@Html.DropDownListFor(x => x.AuthorID,
+												(List<SelectListItem>)ViewBag.authors,
+												new { @class = "form-control" })
+					</div>
+					<div class="form-group">
+						<label for="InputCoverImageUrl">Cover Image </label>
+						<input type="text" class="form-control" id="InputCoverImageUrl" asp-for="CoverImageUrl" placeholder="Cover Image Url">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputCategory">Category</label>
+						@Html.DropDownListFor(x => x.CategoryID,
+											(List<SelectListItem>)ViewBag.categories,
+											new { @class = "form-control" })
+					</div>
+
+					<button type="submit" class="btn btn-primary waves-effect waves-light">Create</button>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+

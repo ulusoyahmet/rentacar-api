@@ -1,0 +1,68 @@
+﻿@model List<ResultCommentDto>
+
+@{
+	ViewData["Title"] = "CommentsByBlog";
+	Layout = "~/Views/AdminLayout/Index.cshtml";
+	int count = 0;
+	int columnCounter = 0;
+}
+
+<div class="row">
+	<div class="col-xl-12">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Comment List Of Blog<@ViewBag.blogId> </h4>
+				<p class="card-subtitle mb-4">
+					Use table to view  comments and delete comments.
+				</p>
+				@if (Model.Any())
+				{	
+					<div class="row">
+						@foreach (var item in Model)
+						{
+							count++;
+							columnCounter++;
+
+							<div class="col-md-3 mb-4">
+								<div class="card h-100">
+									<div class="card-header">
+										Comment #@count
+									</div>
+									<div class="card-body">
+										<h5 class="card-title">@item.Name</h5>
+										<p class="card-text">@item.Body</p>
+									</div>
+									<div class="card-footer">
+										<a href="/Admin/AdminComment/RemoveComment/@item.CommentID" class="btn btn-danger btn-sm">Delete</a>
+									</div>
+								</div>
+							</div>
+
+							@if (columnCounter % 4 == 0)
+							{
+								<div class="row"></div>
+							}
+						}
+					</div>
+				}
+				else
+				{
+					<div class="card text-white bg-warning">
+						<div class="card-body">
+							<blockquote class="card-bodyquote mb-0">
+								<p>
+									There are no comments here yet.
+								</p>
+								<footer class="blockquote-footer text-white-50">
+									No Data in <cite title="Source Title">Comments</cite>
+								</footer>
+							</blockquote>
+						</div>
+					</div>
+				}
+			</div>
+
+		</div>
+
+	</div>
+</div>

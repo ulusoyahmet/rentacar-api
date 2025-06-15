@@ -1,0 +1,83 @@
+﻿@model List<ResultPricingDto>
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/AdminLayout/Index.cshtml";
+	int count = 1;
+}
+
+<div class="row">
+	<div class="col-xl-12">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Car Pricing List</h4>
+				<p class="card-subtitle mb-4">
+					Use this table to view pricings, delete them and navigating to create and update forms.
+				</p>
+				<div class="table-responsive">
+					@if (Model.Any())
+					{
+						<table class="table mb-0">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Period</th>
+									<th>Update</th>
+									<th>Delete</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model)
+								{
+									<tr>
+										<th scope="row">@count</th>
+										<td>@item.Name</td>
+										<td>
+											<a href="/Admin/AdminPricing/UpdatePricing/@item.PricingID" type="button" class="btn btn-outline-warning waves-effect waves-light">Update</a>
+										</td>
+										<td>
+											<a href="/Admin/AdminPricing/RemovePricing/@item.PricingID" type="button" class="btn btn-outline-danger waves-effect waves-light">Delete</a>
+										</td>
+									</tr>
+									count++;
+								}
+							</tbody>
+						</table>
+					}
+					else
+					{
+						<div class="card text-white bg-warning">
+							<div class="card-body">
+								<blockquote class="card-bodyquote mb-0">
+									<p>
+										There are no pricings here yet.
+									</p>
+									<footer class="blockquote-footer text-white-50">
+										No Data in <cite title="Source Title">Pricings</cite>
+									</footer>
+								</blockquote>
+							</div>
+						</div>
+					}
+
+					<a href="/Admin/AdminPricing/CreatePricing" type="button" class="btn btn-outline-secondary waves-effect waves-light">New Pricing</a>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,31 @@
+﻿@model UpdatePricingDto
+
+@{
+    ViewData["Title"] = "UpdatePricing";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="row">
+	<div class="col-xl-12">
+		<div class="card">
+			<div class="card-body">
+
+				<h4 class="card-title">Update Pricing(@Model.PricingID)</h4>
+				<p class="card-subtitle mb-4">Please fullfill all the fields with required information.</p>
+
+				<form method="post">
+					<input type="hidden" asp-for="PricingID" />
+
+					<div class="form-group">
+						<label for="InputTitle">Period</label>
+						<input type="text" class="form-control" id="InputTitle" asp-for="Name" placeholder="Period">
+					</div>
+
+					<button type="submit" class="btn btn-primary waves-effect waves-light">Update</button>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+

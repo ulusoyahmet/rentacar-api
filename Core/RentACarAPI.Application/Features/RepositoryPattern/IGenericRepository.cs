@@ -10,5 +10,6 @@ namespace RentACarAPI.Application.Features.RepositoryPattern
         Task RemoveAsync(T entity);
         Task<T> GetByIdAsync(int id);
         Task<List<T>> GetAllWithIncludeAsync(params Expression<Func<T, object>>[] includes);
+        Task<List<T>> GetCommentsByBlogId(int id);
     }
 }

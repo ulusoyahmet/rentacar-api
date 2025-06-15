@@ -51,6 +51,18 @@ namespace RentACarAPI.Persistence.Repositories.CommentRepositories
                 KeyNotFoundException($"Entity of type {typeof(Comment).Name} with ID {id} was not found.");
         }
 
+        public async Task<List<Comment>> GetCommentsByBlogId(int id)
+        {
+            return await _dbSet.Where(x => x.BlogID == id).Select(x => new Comment()
+            {
+                CommentID = x.CommentID,
+                BlogID = x.BlogID,
+                Name = x.Name,
+                Body = x.Body,
+                CreatedDate = x.CreatedDate
+            }).ToListAsync();
+        }
+
         public async Task RemoveAsync(Comment entity)
         {
             _dbSet.Remove(entity);

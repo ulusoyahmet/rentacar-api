@@ -1,7 +1,7 @@
-﻿@model CreateCategoryDto
+﻿@model CreatePricingDto
 
 @{
-    ViewData["Title"] = "CreateCategory";
+    ViewData["Title"] = "CreatePricing";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
@@ -10,13 +10,13 @@
 		<div class="card">
 			<div class="card-body">
 
-				<h4 class="card-title">Add New Category</h4>
+				<h4 class="card-title">Add New Pricing</h4>
 				<p class="card-subtitle mb-4">Please fullfill all the fields with required information.</p>
 
 				<form method="post">
 					<div class="form-group">
-						<label for="InputTitle">Name</label>
-						<input type="text" class="form-control" id="InputTitle" asp-for="Name" placeholder="Name">
+						<label for="InputTitle">Period</label>
+						<input type="text" class="form-control" id="InputTitle" asp-for="Name" placeholder="Period">
 					</div>
 
 					<button type="submit" class="btn btn-primary waves-effect waves-light">Create</button>
@@ -26,6 +26,8 @@
 		</div>
 	</div>
 </div>
+
+
 
 
 

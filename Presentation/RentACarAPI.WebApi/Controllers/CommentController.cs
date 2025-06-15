@@ -29,6 +29,13 @@ namespace RentACarAPI.WebApi.Controllers
             return Ok(value);
         }
 
+        [HttpGet("GetCommentsByBlog")]
+        public async Task<IActionResult> GetCommentsByBlog(int id)
+        {
+            var values = await _commentRepository.GetCommentsByBlogId(id);
+            return Ok(values);
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateComment(Comment entity)
         {
@@ -43,6 +50,7 @@ namespace RentACarAPI.WebApi.Controllers
             await _commentRepository.RemoveAsync(value);
             return Ok($"Comment({id}) has been deleted.");
         }
+
 
         [HttpPut]
         public async Task<IActionResult> UpdateComment(Comment entity)

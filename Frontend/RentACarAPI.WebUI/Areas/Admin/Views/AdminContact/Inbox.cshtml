@@ -1,0 +1,82 @@
+﻿@model List<ResultContactDto>
+
+@{
+	ViewData["Title"] = "Inbox";
+	Layout = "~/Views/AdminLayout/Index.cshtml";
+	int count = 1;
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+				<h4 class="card-title">Inbox</h4>
+				<p class="card-subtitle mb-4">
+					Use this table to view and delete messages.
+                    <code type="hidden">$().DataTable();</code>.
+                </p>
+
+                <table id="basic-datatable" class="table dt-responsive nowrap">
+					@if (Model.Any())
+					{
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Name</th>
+								<th>Subject</th>
+								<th>Email</th>
+								<th>Date</th>
+								<th>Delete</th>
+								<th>Message</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (var item in Model)
+							{
+								<tr>
+									<th scope="row">@count</th>
+									<td>@item.Name</td>
+									<td>@item.Subject</td>
+									<td>@item.Email</td>
+									<td>@DateTime.Parse(item.SentDate.ToString()).ToString("d. MMM, yyyy")</td>
+									<td>
+										<a href="/Admin/AdminContact/RemoveContact/@item.ContactID" type="button" class="btn btn-outline-danger waves-effect waves-light">Delete</a>
+									</td>
+									<td>@item.Message</td>
+								</tr>
+								count++;
+							}
+						</tbody>
+					}
+					else
+					{
+						<div class="card text-white bg-warning">
+							<div class="card-body">
+								<blockquote class="card-bodyquote mb-0">
+									<p>
+										There are no contacts here yet.
+									</p>
+									<footer class="blockquote-footer text-white-50">
+										No Data in <cite title="Source Title">Contacts</cite>
+									</footer>
+								</blockquote>
+							</div>
+						</div>
+					}
+                </table>
+
+            </div> 
+        </div> 
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

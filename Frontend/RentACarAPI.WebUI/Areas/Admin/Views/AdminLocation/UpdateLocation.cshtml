@@ -1,0 +1,34 @@
+﻿@model UpdateLocationDto
+
+@{
+	ViewData["Title"] = "UpdateLocation";
+	Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+
+<div class="row">
+	<div class="col-xl-12">
+		<div class="card">
+			<div class="card-body">
+
+				<h4 class="card-title">Update Location(@Model.LocationID)</h4>
+				<p class="card-subtitle mb-4">Please fullfill all the fields with required information.</p>
+
+				<form method="post">
+					<input type="hidden" asp-for="LocationID" />
+
+					<div class="form-group">
+						<label for="Name">Location</label>
+						<input type="text" class="form-control" id="Name" asp-for="Name" placeholder="Location">
+					</div>
+
+					<button type="submit" class="btn btn-primary waves-effect waves-light">Update</button>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
