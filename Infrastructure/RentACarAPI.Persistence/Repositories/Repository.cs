@@ -77,5 +77,10 @@ namespace RentACarAPI.Persistence.Repositories
             _dbSet.Update(entity);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<int> GetCountAsync()
+        {
+            return await _dbSet.CountAsync();
+        }
     }
 }

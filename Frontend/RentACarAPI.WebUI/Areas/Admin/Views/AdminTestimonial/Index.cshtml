@@ -1,0 +1,86 @@
+﻿@model List<ResultTestimonialDto>
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/AdminLayout/Index.cshtml";
+	int count = 1;
+}
+
+<div class="row">
+	<div class="col-xl-12">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Testimonial List</h4>
+				<p class="card-subtitle mb-4">
+					Use this table to view testimonials, delete them and navigating to create and update forms.
+				</p>
+				<div class="table-responsive">
+					@if (Model.Any())
+					{
+						<table class="table mb-0">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Name</th>
+									<th>Title</th>
+									<th>Comment</th>
+									<th>Update</th>
+									<th>Delete</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model)
+								{
+									<tr>
+										<td>@count</td>
+										<td><img class="rounded-circle" style="margin-right:5px;" src="@item.imageUrl" width="50" height="50" /> @item.name</td>
+										<td>@item.title</td>
+										<td>@item.comment</td>
+										<td>
+											<a href="/Admin/AdminTestimonial/UpdateTestimonial/@item.testimonialID" type="button" class="btn btn-outline-warning waves-effect waves-light">Update</a>
+										</td>
+										<td>
+											<a href="/Admin/AdminTestimonial/RemoveTestimonial/@item.testimonialID" type="button" class="btn btn-outline-danger waves-effect waves-light">Delete</a>
+										</td>
+
+									</tr>
+									count++;
+								}
+							</tbody>
+						</table>
+					}
+					else
+					{
+						<div class="card text-white bg-warning">
+							<div class="card-body">
+								<blockquote class="card-bodyquote mb-0">
+									<p>
+										There are no testimonials here yet.
+									</p>
+									<footer class="blockquote-footer text-white-50">
+										No Data in <cite title="Source Title">Testimonials</cite>
+									</footer>
+								</blockquote>
+							</div>
+						</div>
+					}
+
+					<a href="/Admin/AdminTestimonial/CreateTestimonial" type="button" class="btn btn-outline-secondary waves-effect waves-light">New Testimonial</a>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+

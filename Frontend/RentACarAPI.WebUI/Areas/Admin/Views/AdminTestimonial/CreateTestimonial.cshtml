@@ -1,8 +1,8 @@
-﻿@model CreateServiceDto
+﻿@model CreateTestimonialDto
 
 @{
-    ViewData["Title"] = "CreateService";
-    Layout = "~/Views/AdminLayout/Index.cshtml";
+	ViewData["Title"] = "CreateTestimonial";
+	Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
 <div class="row">
@@ -10,21 +10,25 @@
 		<div class="card">
 			<div class="card-body">
 
-				<h4 class="card-title">Add New Service</h4>
+				<h4 class="card-title">Add New Testimonial</h4>
 				<p class="card-subtitle mb-4">Please fullfill all the fields with required information.</p>
 
 				<form method="post">
+					<div class="form-group">
+						<label for="Name">Name</label>
+						<input type="text" class="form-control" id="Name" asp-for="name" placeholder="Name">
+					</div>
 					<div class="form-group">
 						<label for="Name">Title</label>
 						<input type="text" class="form-control" id="Title" asp-for="title" placeholder="Title">
 					</div>
 					<div class="form-group">
-						<label for="Description">Service</label>
-						<input type="text" class="form-control" id="Description" asp-for="description" placeholder="Description">
+						<label for="comment">Comment</label>
+						<input type="text" class="form-control" id="comment" asp-for="comment" placeholder="Comment">
 					</div>
 					<div class="form-group">
-						<label for="Icon">Icon Url</label>
-						<input type="text" class="form-control" id="Icon" asp-for="iconUrl" placeholder="Icon Url">
+						<label for="Icon">Image Url</label>
+						<input type="text" class="form-control" id="Icon" asp-for="imageUrl" placeholder="Image Url">
 					</div>
 
 					<button type="submit" class="btn btn-primary waves-effect waves-light">Create</button>

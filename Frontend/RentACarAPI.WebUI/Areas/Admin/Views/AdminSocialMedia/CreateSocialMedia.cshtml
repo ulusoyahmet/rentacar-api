@@ -1,30 +1,31 @@
-﻿@model CreateServiceDto
+﻿@model CreateSocialMediaDto
 
 @{
-    ViewData["Title"] = "CreateService";
+    ViewData["Title"] = "CreateSocialMedia";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
+
 
 <div class="row">
 	<div class="col-xl-12">
 		<div class="card">
 			<div class="card-body">
 
-				<h4 class="card-title">Add New Service</h4>
+				<h4 class="card-title">Add New SocialMedia</h4>
 				<p class="card-subtitle mb-4">Please fullfill all the fields with required information.</p>
 
 				<form method="post">
 					<div class="form-group">
 						<label for="Name">Title</label>
-						<input type="text" class="form-control" id="Title" asp-for="title" placeholder="Title">
+						<input type="text" class="form-control" id="Name" asp-for="Name" placeholder="Name">
 					</div>
 					<div class="form-group">
-						<label for="Description">Service</label>
-						<input type="text" class="form-control" id="Description" asp-for="description" placeholder="Description">
+						<label for="Url">SocialMedia</label>
+						<input type="text" class="form-control" id="Url" asp-for="Url" placeholder="Url">
 					</div>
 					<div class="form-group">
 						<label for="Icon">Icon Url</label>
-						<input type="text" class="form-control" id="Icon" asp-for="iconUrl" placeholder="Icon Url">
+						<input type="text" class="form-control" id="Icon" asp-for="Icon" placeholder="Icon">
 					</div>
 
 					<button type="submit" class="btn btn-primary waves-effect waves-light">Create</button>
@@ -34,6 +35,8 @@
 		</div>
 	</div>
 </div>
+
+
 
 
 

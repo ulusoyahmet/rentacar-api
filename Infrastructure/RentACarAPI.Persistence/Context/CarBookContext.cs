@@ -32,5 +32,6 @@ namespace RentACarAPI.Persistence.Context
         public DbSet<Author> Authors { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<CarRenting> CarRentings { get; set; }
     }
 }

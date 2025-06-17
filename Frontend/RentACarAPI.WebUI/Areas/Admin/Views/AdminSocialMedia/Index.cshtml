@@ -1,0 +1,87 @@
+﻿@model List<ResultSocialMediaDto>
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/AdminLayout/Index.cshtml";
+	int count = 1;
+}
+
+<div class="row">
+	<div class="col-xl-12">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Social Media Accounts</h4>
+				<p class="card-subtitle mb-4">
+					Use this table to view socialmedia accounts, delete them and navigating to create and update forms.
+				</p>
+				<div class="table-responsive">
+					@if (Model.Any())
+					{
+						<table class="table mb-0">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Name</th>
+									<th>Url</th>
+									<th>Icon</th>
+									<th>Update</th>
+									<th>Delete</th>
+									<th>Go to Account</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model)
+								{
+									<tr>
+										<td>@count</td>
+										<td>@item.Name</td>
+										<td>@item.Url</td>
+										<td>@item.Icon</td>
+										<td>
+											<a href="/Admin/AdminSocialMedia/UpdateSocialMedia/@item.SocialMediaID" type="button" class="btn btn-outline-warning waves-effect waves-light">Update</a>
+										</td>
+										<td>
+											<a href="/Admin/AdminSocialMedia/RemoveSocialMedia/@item.SocialMediaID" type="button" class="btn btn-outline-danger waves-effect waves-light">Delete</a>
+										</td>
+										<td>
+											<a href="@item.Url" type="button" class="btn btn-outline-dark waves-effect waves-light">Go</a>
+										</td>
+									</tr>
+									count++;
+								}
+							</tbody>
+						</table>
+					}
+					else
+					{
+						<div class="card text-white bg-warning">
+							<div class="card-body">
+								<blockquote class="card-bodyquote mb-0">
+									<p>
+										There are no socialmedias here yet.
+									</p>
+									<footer class="blockquote-footer text-white-50">
+										No Data in <cite title="Source Title">SocialMedias</cite>
+									</footer>
+								</blockquote>
+							</div>
+						</div>
+					}
+
+					<a href="/Admin/AdminSocialMedia/CreateSocialMedia" type="button" class="btn btn-outline-secondary waves-effect waves-light">New SocialMedia</a>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+</div>
+
+
+
+
+
+
+

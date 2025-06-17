@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using RentACarAPI.Application.Features.CQRS.Commands.CarCommands;
 using RentACarAPI.Application.Features.CQRS.Handlers.CarHandlers;
 using RentACarAPI.Application.Features.CQRS.Queries.CarQueries;
 using RentACarAPI.Application.Features.CQRS.Results.CarResults;
+using RentACarAPI.Application.Features.Mediator.Queries.StatisticsQueries;
 
 namespace RentACarAPI.WebApi.Controllers
 {
@@ -24,7 +26,8 @@ namespace RentACarAPI.WebApi.Controllers
                                UpdateCarCommandHandler updateCarCommandHandler,
                                RemoveCarCommandHandler removeCarCommandHandler,
                                GetCarWithBrandQueryHandler getCarWithBrandQueryHandler,
-                               GetCarWithDeepIncludesQueryHandler getCarWithIncludesQueryHandler)
+                               GetCarWithDeepIncludesQueryHandler getCarWithIncludesQueryHandler
+                               )
         {
             _createCarCommandHandler = createCarCommandHandler;
             _getCarByIdQueryHandler = getCarByIdQueryHandler;
@@ -66,6 +69,7 @@ namespace RentACarAPI.WebApi.Controllers
                 .ToList();
             return Ok(last5);
         }
+
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCar(int id)

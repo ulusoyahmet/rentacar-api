@@ -1,0 +1,422 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    Random random = new Random();
+}
+
+<div class="row">
+    <div class="col-md-6 col-xl-3">
+        <div class="card bg-primary border-primary">
+            <div class="card-body">
+                <div class="mb-4">
+                    <span class="badge badge-soft-light float-right">Active</span>
+                    <h5 class="card-title mb-0 text-white">Total Cars</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-8">
+                        <h2 class="d-flex align-items-center mb-0 text-white">
+                            @ViewBag.carCount
+                        </h2>
+                    </div>
+                    <div class="col-4 text-right">
+                        <span class="text-white-50">@random.Next(0, 101)% <i class="mdi mdi-arrow-up"></i></span>
+                    </div>
+                </div>
+
+                <div class="progress badge-soft-light shadow-sm" style="height: 5px;">
+                    <div class="progress-bar bg-light" role="progressbar" style="width: @random.Next(0, 101)%;"></div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col-->
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card bg-success border-success">
+            <div class="card-body">
+                <div class="mb-4">
+                    <span class="badge badge-soft-light float-right">Active</span>
+                    <h5 class="card-title mb-0 text-white">Total Authors</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-8">
+                        <h2 class="d-flex align-items-center text-white mb-0">
+                            @ViewBag.authorCount
+                        </h2>
+                    </div>
+                    <div class="col-4 text-right">
+                        <span class="text-white-50">@random.Next(0, 101)% <i class="mdi mdi-arrow-down"></i></span>
+                    </div>
+                </div>
+
+                <div class="progress badge-soft-light shadow-sm" style="height: 5px;">
+                    <div class="progress-bar bg-light" role="progressbar" style="width: @random.Next(0, 101)%;"></div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col-->
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card bg-warning border-warning">
+            <div class="card-body">
+                <div class="mb-4">
+                    <span class="badge badge-soft-light float-right">Active</span>
+                    <h5 class="card-title mb-0 text-white">Blog Count</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-8">
+                        <h2 class="d-flex align-items-center text-white mb-0">
+                            @ViewBag.blogCount
+                        </h2>
+                    </div>
+                    <div class="col-4 text-right">
+                        <span class="text-white-50">@random.Next(0, 101)% <i class="mdi mdi-arrow-up"></i></span>
+                    </div>
+                </div>
+
+                <div class="progress badge-soft-light shadow-sm" style="height: 5px;">
+                    <div class="progress-bar bg-light" role="progressbar" style="width: @random.Next(0, 101)%;"></div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col-->
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card bg-info border-info">
+            <div class="card-body">
+                <div class="mb-4">
+                    <span class="badge badge-soft-light float-right">All Time</span>
+                    <h5 class="card-title mb-0 text-white">Total Brands</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-8">
+                        <h2 class="d-flex align-items-center text-white mb-0">
+                            @ViewBag.brandCount
+                        </h2>
+                    </div>
+                    <div class="col-4 text-right">
+                        <span class="text-white-50">@random.Next(0, 101)% <i class="mdi mdi-arrow-down"></i></span>
+                    </div>
+                </div>
+
+                <div class="progress badge-soft-light shadow-sm" style="height: 5px;">
+                    <div class="progress-bar bg-light" role="progressbar" style="width: @random.Next(0, 101)%;"></div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col-->
+</div>
+
+
+<div class="row">
+    <div class="col-md-6 col-xl-3">
+        <div class="card bg-primary border-primary">
+            <div class="card-body">
+                <div class="mb-4">
+                    <span class="badge badge-soft-light float-right">All</span>
+                    <h5 class="card-title mb-0 text-white">Renting Locations</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-8">
+                        <h2 class="d-flex align-items-center mb-0 text-white">
+                            @ViewBag.locationCount
+                        </h2>
+                    </div>
+                    <div class="col-4 text-right">
+                        <span class="text-white-50">@random.Next(0, 101)% <i class="mdi mdi-arrow-up"></i></span>
+                    </div>
+                </div>
+
+                <div class="progress badge-soft-light shadow-sm" style="height: 5px;">
+                    <div class="progress-bar bg-light" role="progressbar" style="width: @random.Next(0, 101)%;"></div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col-->
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card bg-success border-success">
+            <div class="card-body">
+                <div class="mb-4">
+                    <span class="badge badge-soft-light float-right">All Time</span>
+                    <h5 class="card-title mb-0 text-white">Most Popular Brand</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-8">
+                        <h2 class="d-flex align-items-center text-white mb-0">
+                            @ViewBag.brandName
+                        </h2>
+                    </div>
+                    <div class="col-4 text-right">
+                        <span class="text-white-50">@random.Next(0, 101)% <i class="mdi mdi-arrow-up"></i></span>
+                    </div>
+                </div>
+
+                <div class="progress badge-soft-light shadow-sm" style="height: 5px;">
+                    <div class="progress-bar bg-light" role="progressbar" style="width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col-->
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card bg-warning border-warning">
+            <div class="card-body">
+                <div class="mb-4">
+                    <span class="badge badge-soft-light float-right">All Time</span>
+                    <h5 class="card-title mb-0 text-white">Most Commented Blog</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-8">
+                        <h2 class="d-flex align-items-center text-white mb-0">
+                            @ViewBag.blogTitle
+                        </h2>
+                    </div>
+                    <div class="col-4 text-right">
+                        <span class="text-white-50">@random.Next(0, 101)% <i class="mdi mdi-arrow-up"></i></span>
+                    </div>
+                </div>
+
+                <div class="progress badge-soft-light shadow-sm" style="height: 5px;">
+                    <div class="progress-bar bg-light" role="progressbar" style="width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col-->
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card bg-info border-info">
+            <div class="card-body">
+                <div class="mb-4">
+                    <span class="badge badge-soft-light float-right">All Time</span>
+                    <h5 class="card-title mb-0 text-white">Automatic Car Count</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-8">
+                        <h2 class="d-flex align-items-center text-white mb-0">
+                            @ViewBag.automaricCarCount
+                        </h2>
+                    </div>
+                    <div class="col-4 text-right">
+                        <span class="text-white-50">@random.Next(0, 101)% <i class="mdi mdi-arrow-up"></i></span>
+                    </div>
+                </div>
+
+                <div class="progress badge-soft-light shadow-sm" style="height: 5px;">
+                    <div class="progress-bar bg-light" role="progressbar" style="width: 90%;"></div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col-->
+</div>
+
+<div class="row">
+    <div class="col-md-6 col-xl-3">
+        <div class="card bg-primary border-primary">
+            <div class="card-body">
+                <div class="mb-4">
+                    <span class="badge badge-soft-light float-right">Active</span>
+                    <h5 class="card-title mb-0 text-white">Cars Under 1000 Km</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-8">
+                        <h2 class="d-flex align-items-center mb-0 text-white">
+                            @ViewBag.carCountUnder1000Km
+                        </h2>
+                    </div>
+                    <div class="col-4 text-right">
+                        <span class="text-white-50">@random.Next(0, 101)% <i class="mdi mdi-arrow-up"></i></span>
+                    </div>
+                </div>
+
+                <div class="progress badge-soft-light shadow-sm" style="height: 5px;">
+                    <div class="progress-bar bg-light" role="progressbar" style="width: @random.Next(0, 101)%;"></div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col-->
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card bg-success border-success">
+            <div class="card-body">
+                <div class="mb-4">
+                    <span class="badge badge-soft-light float-right">All Cars</span>
+                    <h5 class="card-title mb-0 text-white">Average Hourly Renting Cost</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-8">
+                        <h2 class="d-flex align-items-center text-white mb-0">
+                            $@ViewBag.avgHourlyPrice
+                        </h2>
+                    </div>
+                    <div class="col-4 text-right">
+                        <span class="text-white-50">@random.Next(0, 101)% <i class="mdi mdi-arrow-down"></i></span>
+                    </div>
+                </div>
+
+                <div class="progress badge-soft-light shadow-sm" style="height: 5px;">
+                    <div class="progress-bar bg-light" role="progressbar" style="width: @random.Next(0, 101)%;"></div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col-->
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card bg-warning border-warning">
+            <div class="card-body">
+                <div class="mb-4">
+                    <span class="badge badge-soft-light float-right">All Cars</span>
+                    <h5 class="card-title mb-0 text-white">Average Daily Renting Cost</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-8">
+                        <h2 class="d-flex align-items-center text-white mb-0">
+                            $@ViewBag.avgDailyPrice
+                        </h2>
+                    </div>
+                    <div class="col-4 text-right">
+                        <span class="text-white-50">@random.Next(0, 101)% <i class="mdi mdi-arrow-up"></i></span>
+                    </div>
+                </div>
+
+                <div class="progress badge-soft-light shadow-sm" style="height: 5px;">
+                    <div class="progress-bar bg-light" role="progressbar" style="width: @random.Next(0, 101)%;"></div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col-->
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card bg-info border-info">
+            <div class="card-body">
+                <div class="mb-4">
+                    <span class="badge badge-soft-light float-right">All Cars</span>
+                    <h5 class="card-title mb-0 text-white">Average Monthly Renting Cost</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-8">
+                        <h2 class="d-flex align-items-center text-white mb-0">
+                            $@ViewBag.avgMonthlyPrice
+                        </h2>
+                    </div>
+                    <div class="col-4 text-right">
+                        <span class="text-white-50">@random.Next(0, 101) <i class="mdi mdi-arrow-down"></i></span>
+                    </div>
+                </div>
+
+                <div class="progress badge-soft-light shadow-sm" style="height: 5px;">
+                    <div class="progress-bar bg-light" role="progressbar" style="width:@random.Next(0, 101)%;"></div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col-->
+</div>
+
+<div class="row">
+    <div class="col-md-6 col-xl-3">
+        <div class="card bg-primary border-primary">
+            <div class="card-body">
+                <div class="mb-4">
+                    <span class="badge badge-soft-light float-right">All Time</span>
+                    <h5 class="card-title mb-0 text-white">Total Electric Cars</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-8">
+                        <h2 class="d-flex align-items-center mb-0 text-white">
+                            @ViewBag.electricCarCount
+                        </h2>
+                    </div>
+                    <div class="col-4 text-right">
+                        <span class="text-white-50">@random.Next(0, 101)% <i class="mdi mdi-arrow-up"></i></span>
+                    </div>
+                </div>
+
+                <div class="progress badge-soft-light shadow-sm" style="height: 5px;">
+                    <div class="progress-bar bg-light" role="progressbar" style="width: @random.Next(0, 101)%;"></div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col-->
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card bg-success border-success">
+            <div class="card-body">
+                <div class="mb-4">
+                    <span class="badge badge-soft-light float-right">All Time</span>
+                    <h5 class="card-title mb-0 text-white">Diesel or Gasoline Cars</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-8">
+                        <h2 class="d-flex align-items-center text-white mb-0">
+                            @ViewBag.intCombCarCount
+                        </h2>
+                    </div>
+                    <div class="col-4 text-right">
+                        <span class="text-white-50">@random.Next(0, 101)% <i class="mdi mdi-arrow-up"></i></span>
+                    </div>
+                </div>
+
+                <div class="progress badge-soft-light shadow-sm" style="height: 5px;">
+                    <div class="progress-bar bg-light" role="progressbar" style="width: 99%;"></div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col-->
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card bg-warning border-warning">
+            <div class="card-body">
+                <div class="mb-4">
+                    <span class="badge badge-soft-light float-right">Among All Cars</span>
+                    <h5 class="card-title mb-0 text-white">Most Affordable Car</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-8">
+                        <h2 class="d-flex align-items-center text-white mb-0">
+                            @ViewBag.mostAffordableCarName
+                        </h2>
+                    </div>
+                    <div class="col-4 text-right">
+                        <span class="text-white-50">@random.Next(0, 101)% <i class="mdi mdi-arrow-up"></i></span>
+                    </div>
+                </div>
+
+                <div class="progress badge-soft-light shadow-sm" style="height: 7px;">
+                    <div class="progress-bar bg-light" role="progressbar" style="width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col-->
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card bg-info border-info">
+            <div class="card-body">
+                <div class="mb-4">
+                    <span class="badge badge-soft-light float-right">Among All Cars</span>
+                    <h5 class="card-title mb-0 text-white">Most Expensive Car</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-8">
+                        <h2 class="d-flex align-items-center text-white mb-0">
+                            @ViewBag.mostExpensiveCarName
+                        </h2>
+                    </div>
+                    <div class="col-4 text-right">
+                        <span class="text-white-50">@random.Next(0, 101)% <i class="mdi mdi-arrow-down"></i></span>
+                    </div>
+                </div>
+
+                <div class="progress badge-soft-light shadow-sm" style="height: 5px;">
+                    <div class="progress-bar bg-light" role="progressbar" style="width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col-->
+</div>
+
+
+
+
+
+
+
