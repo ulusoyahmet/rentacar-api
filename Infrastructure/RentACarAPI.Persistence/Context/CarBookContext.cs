@@ -33,5 +33,25 @@ namespace RentACarAPI.Persistence.Context
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<CarRenting> CarRentings { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<CarRentingDetail> CarRentingDetails { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<CarRentingDetail>()
+                .HasOne(d => d.PickUpLocation)
+                .WithMany()
+                .HasForeignKey(d => d.PickUpLocationID)
+                .OnDelete(DeleteBehavior.Restrict); // ❌ Prevent cascade delete here
+
+            modelBuilder.Entity<CarRentingDetail>()
+                .HasOne(d => d.DropOffLocation)
+                .WithMany()
+                .HasForeignKey(d => d.DropOffLocationID)
+                .OnDelete(DeleteBehavior.Restrict); // ❌ Or here if you prefer
+        }
+
     }
 }

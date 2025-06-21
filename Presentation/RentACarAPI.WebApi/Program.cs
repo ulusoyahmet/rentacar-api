@@ -7,10 +7,12 @@ using RentACarAPI.Application.Features.CQRS.Handlers.ContactHandlers;
 using RentACarAPI.Application.Features.Mapping;
 using RentACarAPI.Application.Features.RepositoryPattern;
 using RentACarAPI.Application.Interfaces;
+using RentACarAPI.Application.Interfaces.CarRentingInterfaces;
 using RentACarAPI.Application.Interfaces.StatisticsInterfaces;
 using RentACarAPI.Application.Services;
 using RentACarAPI.Persistence.Context;
 using RentACarAPI.Persistence.Repositories;
+using RentACarAPI.Persistence.Repositories.CarRentingRepositories;
 using RentACarAPI.Persistence.Repositories.CommentRepositories;
 using RentACarAPI.Persistence.Repositories.StatisticsRepositories;
 
@@ -22,6 +24,7 @@ builder.Services.AddDbContext<CarBookContext>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(CommentRepository<>));
 builder.Services.AddScoped(typeof(IStatisticsRepository), typeof(StatisticsRepository));
+builder.Services.AddScoped(typeof(ICarRentingRepository), typeof(CarRentingRepository));
 
 // CQRS
 builder.Services.AddScoped<GetAboutQueryHandler>();
