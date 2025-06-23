@@ -18,5 +18,6 @@
         public List<CarPricing>? CarPricings { get; set; }
         public List<CarRenting>? CarRentings { get; set; }
         public List<CarRentingDetail>? CarRentingDetails { get; set; }
+        public List<CarBooking>? CarBookings { get; set; }
     }
 }

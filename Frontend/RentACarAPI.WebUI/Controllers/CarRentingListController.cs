@@ -15,6 +15,9 @@ namespace RentACarAPI.WebUI.Controllers
 
         public async Task<IActionResult> Index(int id)
         {
+            ViewBag.v1 = "Car Rental";
+            ViewBag.v2 = "Filtered Cars";
+
             ViewBag.locationID = id;
 
             var client = _httpClientFactory.CreateClient();

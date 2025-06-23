@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RentACarAPI.Persistence.Context;
 
@@ -11,9 +12,11 @@ using RentACarAPI.Persistence.Context;
 namespace RentACarAPI.Persistence.Migrations
 {
     [DbContext(typeof(CarBookContext))]
-    partial class CarBookContextModelSnapshot : ModelSnapshot
+    [Migration("20250621123218_car_booking_location_context")]
+    partial class car_booking_location_context
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -208,7 +211,6 @@ namespace RentACarAPI.Persistence.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Message")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -219,9 +221,6 @@ namespace RentACarAPI.Persistence.Migrations
 
                     b.Property<int>("PickUpLocationID")
                         .HasColumnType("int");
-
-                    b.Property<string>("Status")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Surname")
                         .HasColumnType("nvarchar(max)");
@@ -676,7 +675,7 @@ namespace RentACarAPI.Persistence.Migrations
             modelBuilder.Entity("RentACarAPI.Domain.Entities.CarBooking", b =>
                 {
                     b.HasOne("RentACarAPI.Domain.Entities.Car", "Car")
-                        .WithMany("CarBookings")
+                        .WithMany()
                         .HasForeignKey("CarID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -839,8 +838,6 @@ namespace RentACarAPI.Persistence.Migrations
 
             modelBuilder.Entity("RentACarAPI.Domain.Entities.Car", b =>
                 {
-                    b.Navigation("CarBookings");
-
                     b.Navigation("CarDescriptions");
 
                     b.Navigation("CarFeatures");

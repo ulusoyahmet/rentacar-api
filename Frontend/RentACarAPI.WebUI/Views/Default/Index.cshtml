@@ -13,14 +13,14 @@
 
     #drop option{
 
-        color:black;
+    color:black;
 
     }
 
 </style>
 
 <body>
-     
+
     @await Component.InvokeAsync("_NavbarUILayoutComponentPartial")
 
     @await Component.InvokeAsync("_DefaultCoverUILayoutComponentPartial")
@@ -36,11 +36,11 @@
                                 <div class="form-group">
                                     <label for="" class="label">Pick-up location</label>
                                     @Html.DropDownListFor(x => x.LocationID,
-                                             (List<SelectListItem>)ViewBag.locations,
-                                             new { @class = "form-control",
-                                                 @id = "drop",
-                                                 @name = "locationID"
-                                             })
+                                                      (List<SelectListItem>)ViewBag.locations,
+                                                      new { @class = "form-control",
+                                                          @id = "drop",
+                                                          @name = "locationID"
+                                                      })
                                 </div>
                                 <div class="d-flex">
                                     <div class="form-group mr-2">
@@ -103,7 +103,7 @@
         </div>
     </section>
 
-    
+
     @await Component.InvokeAsync("_DefaultLast5CarsWithBrandsComponentPartial")
 
     @await Component.InvokeAsync("_AboutUsComponentPartial")
@@ -121,6 +121,19 @@
     @await Component.InvokeAsync("_FooterUILayoutComponentPartial")
 
     @await Component.InvokeAsync("_ScriptUILayoutComponentPartial")
+
+    <script>
+        window.onload = function() {
+            var alertMessage = '@ViewBag.alert';
+            if (alertMessage && alertMessage !== 'null') {
+                Swal.fire({
+                    title: "Rent A Car",
+                    text: alertMessage,
+                    icon: "success"
+                });
+            }
+        };
+    </script>
 
 </body>
 

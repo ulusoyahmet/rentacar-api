@@ -15,7 +15,7 @@ namespace RentACarAPI.WebUI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string alert)
         {
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:44388/api/Location");
@@ -32,6 +32,7 @@ namespace RentACarAPI.WebUI.Controllers
 
             ViewBag.locations = values;
 
+            ViewBag.alert = alert;
             return View();
 
         }

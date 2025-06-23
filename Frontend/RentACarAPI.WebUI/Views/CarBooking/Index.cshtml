@@ -1,0 +1,76 @@
+﻿@model CreateCarBookingDto
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/UILayout/Index.cshtml";
+}
+
+<div class="col-md-12 block-9 mb-md-5">
+    <h3 class="alert alert-success mt-3">Car Booking Form</h3>
+    <form method="post"  class="bg-light p-5 contact-form">
+        <input asp-for="CarID" type="hidden" value="@ViewBag.id" readonly class="form-control" placeholder="Car">
+        <label for="" class="label">Car</label>
+        <div class="form-group">
+            <input type="text"  readonly class="form-control" placeholder="@ViewBag.carName">
+        </div>
+        <label for="" class="label">Name</label>
+        <div class="form-group">
+            <input asp-for="Name" type="text" class="form-control" placeholder="Your Name">
+        </div>
+        <label for="" class="label">Surname</label>
+        <div class="form-group">
+            <input asp-for="Surname" type="text" class="form-control" placeholder="Your Surname">
+        </div>
+        <label for="" class="label">Mail Address</label>
+        <div class="form-group">
+            <input asp-for="Email" type="text" class="form-control" placeholder="Your Email">
+        </div>
+        <label for="" class="label">Phone Number</label>
+        <div class="form-group">
+            <input asp-for="Phone" type="text" class="form-control" placeholder="Your Phone">
+        </div>
+        <div class="form-group">
+            <label for="" class="label">Pick-up location</label>
+
+            @Html.DropDownListFor(x => x.PickUpLocationID,
+                     (List<SelectListItem>)ViewBag.locations,
+                     "Select Pick-Up Location",
+                     new
+                     {
+                         @class = "form-control",
+                         @id = "drop",
+                         @name = "pickUpLocationID"
+                     })
+        </div>
+        <div class="form-group">
+            <label for="" class="label">Drop-off location</label>
+
+            @Html.DropDownListFor(x => x.DropOffLocationID,
+                     (List<SelectListItem>)ViewBag.locations,
+                     "Select Drop-off Location",
+                     new
+                     {
+                         @class = "form-control",
+                         @id = "drop",
+                         @name = "dropOffLocationID"
+                     })
+        </div>
+        <label for="" class="label">Age</label>
+        <div class="form-group">
+            <input asp-for="Age" type="text" class="form-control" placeholder="Your Age">
+        </div>
+        <label for="" class="label">License Year</label>
+        <div class="form-group">
+            <input asp-for="LicenseYear" type="text" class="form-control" placeholder="Driver License Year">
+        </div>
+        <label for="" class="label">Message(Optional)</label>
+        <div class="form-group">
+            <textarea asp-for="Message" name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Confirm Choices" class="btn btn-primary py-3 px-5">
+        </div>
+    </form>
+
+</div>
+
+

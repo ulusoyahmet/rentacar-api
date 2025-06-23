@@ -35,22 +35,41 @@ namespace RentACarAPI.Persistence.Context
         public DbSet<CarRenting> CarRentings { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<CarRentingDetail> CarRentingDetails { get; set; }
+        public DbSet<CarBooking> CarBookings { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<CarRenting>()
+                .HasOne(d => d.PickUpLocation)
+                .WithMany(d => d.CarRentings)
+                .HasForeignKey(d => d.PickUpLocationID)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
             modelBuilder.Entity<CarRentingDetail>()
                 .HasOne(d => d.PickUpLocation)
                 .WithMany()
                 .HasForeignKey(d => d.PickUpLocationID)
-                .OnDelete(DeleteBehavior.Restrict); // ❌ Prevent cascade delete here
+                .OnDelete(DeleteBehavior.ClientSetNull); 
 
             modelBuilder.Entity<CarRentingDetail>()
                 .HasOne(d => d.DropOffLocation)
                 .WithMany()
                 .HasForeignKey(d => d.DropOffLocationID)
-                .OnDelete(DeleteBehavior.Restrict); // ❌ Or here if you prefer
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            modelBuilder.Entity<CarBooking>()
+                .HasOne(d => d.PickUpLocation)
+                .WithMany(d => d.PickUpCarBookings)
+                .HasForeignKey(d => d.PickUpLocationID)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            modelBuilder.Entity<CarBooking>()
+                .HasOne(d => d.DropOffLocation)
+                .WithMany(d => d.DropOffCarBookings)
+                .HasForeignKey(d => d.DropOffLocationID)
+                .OnDelete(DeleteBehavior.ClientSetNull);
         }
 
     }
