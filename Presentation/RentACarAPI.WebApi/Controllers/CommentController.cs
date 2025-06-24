@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using RentACarAPI.Application.Features.Mediator.Commands.CommentCommands;
 using RentACarAPI.Application.Features.RepositoryPattern;
 using RentACarAPI.Domain.Entities;
 
@@ -8,11 +10,13 @@ namespace RentACarAPI.WebApi.Controllers
     [ApiController]
     public class CommentController : ControllerBase
     {
-        private readonly IGenericRepository<Comment> _commentRepository;
+        private readonly IGenericRepository<Comment> _commentRepository; 
+        private readonly IMediator _mediator;
 
-        public CommentController(IGenericRepository<Comment> commentRepository)
+        public CommentController(IGenericRepository<Comment> commentRepository, IMediator mediator)
         {
             _commentRepository = commentRepository;
+            _mediator = mediator;
         }
 
         [HttpGet]
@@ -37,9 +41,9 @@ namespace RentACarAPI.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateComment(Comment entity)
+        public async Task<IActionResult> CreateComment(CreateCommentCommand command)
         {
-            await _commentRepository.CreateAsync(entity);
+            await _mediator.Send(command);
             return Ok($"Comment has been added.");
         }
 

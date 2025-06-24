@@ -12,9 +12,10 @@
     @await Component.InvokeAsync("_BlogDetailAboutAuthorComponentPartial", new { id = ViewBag.blogId })
 
     <div class="pt-5 mt-5">
-        @await Component.InvokeAsync("_CommentListByBlogComponentPartial")
+        @await Component.InvokeAsync("_CommentListByBlogComponentPartial", new { id = ViewBag.blogId })
 
-        @await Component.InvokeAsync("_CommentFormComponentPartial")
+        @await Component.InvokeAsync("_CommentFormComponentPartial", new { blogId = ViewBag.blogId })
+
     </div>
 
 </div> 

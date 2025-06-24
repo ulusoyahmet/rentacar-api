@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Text;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RentACarAPI.Dto.BlogDtos;
+using RentACarAPI.Dto.CommentDtos;
 
 namespace RentACarAPI.WebUI.Controllers
 {
@@ -45,6 +47,24 @@ namespace RentACarAPI.WebUI.Controllers
             }
             return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> AddComment(CreateCommentDto dto)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(dto);
+            var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+            var response = await client.PostAsync("https://localhost:44388/api/Comment", content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("BlogDetail", "Blog", new { id = dto.BlogID });
+            }
+
+            return View("Error");
+        }
+
 
     }
 }

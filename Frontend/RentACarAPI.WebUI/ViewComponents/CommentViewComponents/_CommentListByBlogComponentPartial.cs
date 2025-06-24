@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using RentACarAPI.Dto.TagDtos;
+using RentACarAPI.Dto.CommentDtos;
 
 namespace RentACarAPI.WebUI.ViewComponents.CommentViewComponents
 {
@@ -20,7 +20,7 @@ namespace RentACarAPI.WebUI.ViewComponents.CommentViewComponents
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<GetTagByBlogIdDto>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<ResultCommentDto>>(jsonData);
                 return View(values);
             }
             return View();
