@@ -1,0 +1,50 @@
+﻿@model List<CarWithPricingDto>
+
+<div class="col-xl-6">
+    <div class="card">
+        <div class="card-body">
+
+            <h4 class="card-title">Average Prices</h4>
+            <p class="card-subtitle mb-4 font-size-13">
+                Prices for current Date: @DateTime.Now.ToString("D")
+            </p>
+
+            <div class="table-responsive">
+                <table class="table table-centered table-hover table-xl mb-0" id="recent-orders">
+                    <thead>
+                        <tr>
+                            <th class="border-top-0">Model</th>
+                            <th class="border-top-0">Brand</th>
+                            <th class="border-top-0">Hourly Price</th>
+                            <th class="border-top-0">Daily Price</th>
+                            <th class="border-top-0">Leasing Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var item in Model)
+                        {
+                            var hourlyPriceInfo = item.CarPricings?.FirstOrDefault(p => p.PricingName == "per hour");
+                            var hourlyPrice = hourlyPriceInfo != null ? hourlyPriceInfo.Amount.ToString("0.00") : "N/A";
+
+                            var dailyPriceInfo = item.CarPricings?.FirstOrDefault(p => p.PricingName == "per day");
+                            var dailyPrice = dailyPriceInfo != null ? dailyPriceInfo.Amount.ToString("0.00") : "N/A";
+
+                            var monthlyPriceInfo = item.CarPricings?.FirstOrDefault(p => p.PricingName == "per month");
+                            var monthlyPrice = monthlyPriceInfo != null ? monthlyPriceInfo.Amount.ToString("0.00") : "N/A";
+                            <tr>
+                                <td class="text-truncate">@item.Model</td>
+                                <td>
+                                    <span class="badge badge-soft-secondary p-2">@item.BrandName</span>
+                                </td>
+                                <td class="text-truncate">$ @hourlyPrice</td>
+                                <td class="text-truncate">$ @dailyPrice</td>
+                                <td class="text-truncate">$ @monthlyPrice</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div> <!-- end card-body-->
+    </div> <!-- end card-->
+</div>

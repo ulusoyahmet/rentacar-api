@@ -16,8 +16,9 @@ namespace RentACarAPI.Application.Comments.Mediator.Handlers.CommentHandlers
         {
             await _repository.CreateAsync(new Comment()
             {
-                Name = request.Name,
                 BlogID = request.BlogID,
+                Name = request.Name,
+                Email = request.Email,
                 Body = request.Body,
                 CreatedDate = DateTime.Now
             });

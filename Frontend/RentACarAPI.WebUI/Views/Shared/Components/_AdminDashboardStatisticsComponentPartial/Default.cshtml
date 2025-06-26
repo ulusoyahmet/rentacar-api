@@ -1,0 +1,104 @@
+﻿@{
+    Random random = new Random();
+}
+<div class="row">
+    <div class="col-md-6 col-xl-3">
+        <div class="card bg-primary border-primary">
+            <div class="card-body">
+                <div class="mb-4">
+                    <span class="badge badge-soft-light float-right">Active</span>
+                    <h5 class="card-title mb-0 text-white">Total Cars</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-8">
+                        <h2 class="d-flex align-items-center mb-0 text-white">
+                            @ViewBag.carCount
+                        </h2>
+                    </div>
+                    <div class="col-4 text-right">
+                        <span class="text-white-50">@random.Next(0, 101)% <i class="mdi mdi-arrow-up"></i></span>
+                    </div>
+                </div>
+
+                <div class="progress badge-soft-light shadow-sm" style="height: 5px;">
+                    <div class="progress-bar bg-light" role="progressbar" style="width: @random.Next(0, 101)%;"></div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col-->
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card bg-success border-success">
+            <div class="card-body">
+                <div class="mb-4">
+                    <span class="badge badge-soft-light float-right">Active</span>
+                    <h5 class="card-title mb-0 text-white">Total Authors</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-8">
+                        <h2 class="d-flex align-items-center text-white mb-0">
+                            @ViewBag.authorCount
+                        </h2>
+                    </div>
+                    <div class="col-4 text-right">
+                        <span class="text-white-50">@random.Next(0, 101)% <i class="mdi mdi-arrow-down"></i></span>
+                    </div>
+                </div>
+
+                <div class="progress badge-soft-light shadow-sm" style="height: 5px;">
+                    <div class="progress-bar bg-light" role="progressbar" style="width: @random.Next(0, 101)%;"></div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col-->
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card bg-warning border-warning">
+            <div class="card-body">
+                <div class="mb-4">
+                    <span class="badge badge-soft-light float-right">Active</span>
+                    <h5 class="card-title mb-0 text-white">Blog Count</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-8">
+                        <h2 class="d-flex align-items-center text-white mb-0">
+                            @ViewBag.blogCount
+                        </h2>
+                    </div>
+                    <div class="col-4 text-right">
+                        <span class="text-white-50">@random.Next(0, 101)% <i class="mdi mdi-arrow-up"></i></span>
+                    </div>
+                </div>
+
+                <div class="progress badge-soft-light shadow-sm" style="height: 5px;">
+                    <div class="progress-bar bg-light" role="progressbar" style="width: @random.Next(0, 101)%;"></div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col-->
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card bg-info border-info">
+            <div class="card-body">
+                <div class="mb-4">
+                    <span class="badge badge-soft-light float-right">All Time</span>
+                    <h5 class="card-title mb-0 text-white">Total Brands</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-8">
+                        <h2 class="d-flex align-items-center text-white mb-0">
+                            @ViewBag.brandCount
+                        </h2>
+                    </div>
+                    <div class="col-4 text-right">
+                        <span class="text-white-50">@random.Next(0, 101)% <i class="mdi mdi-arrow-down"></i></span>
+                    </div>
+                </div>
+
+                <div class="progress badge-soft-light shadow-sm" style="height: 5px;">
+                    <div class="progress-bar bg-light" role="progressbar" style="width: @random.Next(0, 101)%;"></div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col-->
+</div>

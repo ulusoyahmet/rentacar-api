@@ -17,7 +17,7 @@ namespace RentACarAPI.Application.Features.Mediator.Handlers.BlogHandlers
 
         public async Task<List<GetBlogWithIncludesQueryResult>> Handle(GetBlogWithIncludesQuery request, CancellationToken cancellationToken)
         {
-            var values = await _repository.GetAllWithIncludeAsync(x => x.Author, x => x.Category);
+            var values = await _repository.GetAllWithIncludeAsync(x => x.Author, x => x.Category, x=> x.Comments);
             return values.Select(x => new GetBlogWithIncludesQueryResult()
             {
                 BlogID = x.BlogID,
@@ -30,7 +30,8 @@ namespace RentACarAPI.Application.Features.Mediator.Handlers.BlogHandlers
                 Title = x.Title,
                 Body = x.Body,
                 CoverImageUrl = x.CoverImageUrl,
-                CreatedDate = x.CreatedDate
+                CreatedDate = x.CreatedDate,
+                CommentCount = x.Comments.Count
             }).ToList();
         }
 

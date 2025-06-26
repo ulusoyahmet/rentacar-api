@@ -62,7 +62,7 @@ namespace RentACarAPI.WebUI.Controllers
                 return RedirectToAction("BlogDetail", "Blog", new { id = dto.BlogID });
             }
 
-            return View("Error");
+            return View();
         }
 
 

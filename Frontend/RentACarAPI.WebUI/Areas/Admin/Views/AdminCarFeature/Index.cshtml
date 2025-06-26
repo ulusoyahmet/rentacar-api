@@ -1,0 +1,46 @@
+﻿@model List<ResultCarFeatureByCarIdDto>
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/AdminLayout/Index.cshtml";
+	int count = 1;
+}
+
+<div class="row">
+	<div class="col-xl-12">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Car Features for <b style="font-size:1.2rem">@Model.FirstOrDefault().CarName</b> </h4>
+				<p class="card-subtitle mb-4">
+					Use table to view car features and update them.
+				</p>
+                <form method="post">
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <div class="form-check mb-2">
+                            <input type="hidden" name="[@i].CarFeatureID" value="@Model[i].CarFeatureID" />
+                            <input type="hidden" name="[@i].FeatureID" value="@Model[i].FeatureID" />
+                            <input type="hidden" name="[@i].CarID" value="@Model[i].CarID" />
+
+                            <input class="form-check-input" type="checkbox"
+                                   name="[@i].Available"
+                                   value="true"
+                            @(Model[i].Available ? "checked" : "")
+                                   id="feature_@Model[i].FeatureID" />
+
+                            <label class="form-check-label" for="feature_@Model[i].FeatureID">
+                                @Model[i].FeatureName
+                            </label>
+                        </div>
+                    }
+
+                    <button type="submit" class="btn btn-outline-secondary waves-effect waves-light">Update Features</button>
+                </form>
+
+
+			</div>
+
+		</div>
+
+	</div>
+</div>
