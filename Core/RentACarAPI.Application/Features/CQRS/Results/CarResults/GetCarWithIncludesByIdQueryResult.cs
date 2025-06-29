@@ -1,6 +1,6 @@
 ﻿namespace RentACarAPI.Application.Features.CQRS.Results.CarResults
 {
-    public class GetCarWithDeepIncludesQueryResult
+    public class GetCarWithIncludesByIdQueryResult
     {
         public int CarID { get; set; }
         public int BrandID { get; set; }

@@ -1,3 +1,4 @@
+using FluentValidation;
 using RentACarAPI.Application.Features.CQRS.Handlers.AboutHandlers;
 using RentACarAPI.Application.Features.CQRS.Handlers.BannerHandlers;
 using RentACarAPI.Application.Features.CQRS.Handlers.BrandHandlers;
@@ -7,13 +8,18 @@ using RentACarAPI.Application.Features.CQRS.Handlers.ContactHandlers;
 using RentACarAPI.Application.Features.Mapping;
 using RentACarAPI.Application.Features.RepositoryPattern;
 using RentACarAPI.Application.Interfaces;
+using RentACarAPI.Application.Interfaces.CarDescriptionInterfaces;
 using RentACarAPI.Application.Interfaces.CarRentingInterfaces;
+using RentACarAPI.Application.Interfaces.ReviewInterfaces;
 using RentACarAPI.Application.Interfaces.StatisticsInterfaces;
 using RentACarAPI.Application.Services;
+using RentACarAPI.Application.Validators.ReviewValidators;
 using RentACarAPI.Persistence.Context;
 using RentACarAPI.Persistence.Repositories;
+using RentACarAPI.Persistence.Repositories.CarDescriptionRepositories;
 using RentACarAPI.Persistence.Repositories.CarRentingRepositories;
 using RentACarAPI.Persistence.Repositories.CommentRepositories;
+using RentACarAPI.Persistence.Repositories.ReviewRepositories;
 using RentACarAPI.Persistence.Repositories.StatisticsRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,6 +31,8 @@ builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(CommentRepository<>));
 builder.Services.AddScoped(typeof(IStatisticsRepository), typeof(StatisticsRepository));
 builder.Services.AddScoped(typeof(ICarRentingRepository), typeof(CarRentingRepository));
+builder.Services.AddScoped(typeof(ICarDescriptionRepository), typeof(CarDescriptionRepository));
+builder.Services.AddScoped(typeof(IReviewRepository), typeof(ReviewRepository));
 
 // CQRS
 builder.Services.AddScoped<GetAboutQueryHandler>();
@@ -52,6 +60,7 @@ builder.Services.AddScoped<RemoveCarCommandHandler>();
 builder.Services.AddScoped<UpdateCarCommandHandler>();
 builder.Services.AddScoped<GetCarWithBrandQueryHandler>();
 builder.Services.AddScoped<GetCarWithDeepIncludesQueryHandler>();
+builder.Services.AddScoped<GetCarWithIncludesByIdQueryHandler>();
 
 builder.Services.AddScoped<GetCategoryQueryHandler>();
 builder.Services.AddScoped<GetCategoryByIdQueryHandler>();
@@ -67,6 +76,10 @@ builder.Services.AddScoped<UpdateContactCommandHandler>();
 
 // Medaitor
 builder.Services.AddApplicationService(builder.Configuration);
+
+// Fluent Validation
+builder.Services.AddValidatorsFromAssemblyContaining<CreateReviewValidator>();
+
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
 

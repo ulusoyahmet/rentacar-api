@@ -1,6 +1,6 @@
-﻿namespace RentACarAPI.Application.Features.CQRS.Results.CarResults
+﻿namespace RentACarAPI.Dto.CarDtos
 {
-    public class GetCarWithDeepIncludesQueryResult
+    public class ResultCarWithIncludesDto
     {
         public int CarID { get; set; }
         public int BrandID { get; set; }

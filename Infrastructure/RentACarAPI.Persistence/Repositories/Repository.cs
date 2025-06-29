@@ -83,5 +83,6 @@ namespace RentACarAPI.Persistence.Repositories
         {
             return await _dbSet.CountAsync();
         }
+
     }
 }

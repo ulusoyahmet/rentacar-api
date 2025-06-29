@@ -36,6 +36,7 @@ namespace RentACarAPI.Persistence.Context
         public DbSet<Customer> Customers { get; set; }
         public DbSet<CarRentingDetail> CarRentingDetails { get; set; }
         public DbSet<CarBooking> CarBookings { get; set; }
+        public DbSet<Review> Reviews { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

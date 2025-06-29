@@ -19,6 +19,7 @@ namespace RentACarAPI.WebApi.Controllers
         private readonly RemoveCarCommandHandler _removeCarCommandHandler;
         private readonly GetCarWithBrandQueryHandler _getCarWithBrandQueryHandler;
         private readonly GetCarWithDeepIncludesQueryHandler _getCarWithIncludesQueryHandler;
+        private readonly GetCarWithIncludesByIdQueryHandler _getCarWithIncludesByIdQueryHandler;
 
         public CarController(CreateCarCommandHandler createCarCommandHandler,
                                GetCarByIdQueryHandler getCarByIdQueryHandler,
@@ -26,8 +27,8 @@ namespace RentACarAPI.WebApi.Controllers
                                UpdateCarCommandHandler updateCarCommandHandler,
                                RemoveCarCommandHandler removeCarCommandHandler,
                                GetCarWithBrandQueryHandler getCarWithBrandQueryHandler,
-                               GetCarWithDeepIncludesQueryHandler getCarWithIncludesQueryHandler
-                               )
+                               GetCarWithDeepIncludesQueryHandler getCarWithIncludesQueryHandler,
+                               GetCarWithIncludesByIdQueryHandler getCarWithIncludesByIdQueryHandler)
         {
             _createCarCommandHandler = createCarCommandHandler;
             _getCarByIdQueryHandler = getCarByIdQueryHandler;
@@ -36,6 +37,7 @@ namespace RentACarAPI.WebApi.Controllers
             _removeCarCommandHandler = removeCarCommandHandler;
             _getCarWithBrandQueryHandler = getCarWithBrandQueryHandler;
             _getCarWithIncludesQueryHandler = getCarWithIncludesQueryHandler;
+            _getCarWithIncludesByIdQueryHandler = getCarWithIncludesByIdQueryHandler;
         }
 
         [HttpGet]
@@ -56,6 +58,13 @@ namespace RentACarAPI.WebApi.Controllers
         public async Task<IActionResult> GetCarsWithIncludes()
         {
             var values = await _getCarWithIncludesQueryHandler.Handle();
+            return Ok(values);
+        }
+
+        [HttpGet("GetCarsWithIncludesById")]
+        public async Task<IActionResult> GetCarsWithIncludesById(int id)
+        {
+            var values = await _getCarWithIncludesByIdQueryHandler.Handle(new GetCarWithIncludesByIdQuery(id));
             return Ok(values);
         }
 
