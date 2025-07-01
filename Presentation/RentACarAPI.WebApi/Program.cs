@@ -1,4 +1,7 @@
+using System.Text;
 using FluentValidation;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using RentACarAPI.Application.Features.CQRS.Handlers.AboutHandlers;
 using RentACarAPI.Application.Features.CQRS.Handlers.BannerHandlers;
 using RentACarAPI.Application.Features.CQRS.Handlers.BrandHandlers;
@@ -13,6 +16,7 @@ using RentACarAPI.Application.Interfaces.CarRentingInterfaces;
 using RentACarAPI.Application.Interfaces.ReviewInterfaces;
 using RentACarAPI.Application.Interfaces.StatisticsInterfaces;
 using RentACarAPI.Application.Services;
+using RentACarAPI.Application.Tools;
 using RentACarAPI.Application.Validators.ReviewValidators;
 using RentACarAPI.Persistence.Context;
 using RentACarAPI.Persistence.Repositories;
@@ -23,6 +27,25 @@ using RentACarAPI.Persistence.Repositories.ReviewRepositories;
 using RentACarAPI.Persistence.Repositories.StatisticsRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// JWT
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(opt =>
+    {
+        opt.RequireHttpsMetadata = false;
+        opt.TokenValidationParameters =
+            new TokenValidationParameters
+            {
+                ValidAudience = JwtTokenDefaults.ValidAuidience,
+                ValidIssuer = JwtTokenDefaults.ValidIssuer,
+                ClockSkew = TimeSpan.Zero,
+                IssuerSigningKey =
+                    new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
+                        JwtTokenDefaults.Key)),
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true
+            };
+    });
 
 // Add services to the container.
 builder.Services.AddDbContext<CarBookContext>();
@@ -104,6 +127,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

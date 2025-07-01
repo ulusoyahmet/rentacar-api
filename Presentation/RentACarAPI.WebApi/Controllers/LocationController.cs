@@ -1,10 +1,12 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RentACarAPI.Application.Features.Mediator.Commands.LocationCommands;
 using RentACarAPI.Application.Features.Mediator.Queries.LocationQueries;
 
 namespace RentACarAPI.WebApi.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class LocationController : ControllerBase

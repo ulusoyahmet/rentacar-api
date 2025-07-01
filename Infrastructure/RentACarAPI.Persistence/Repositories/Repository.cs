@@ -84,5 +84,9 @@ namespace RentACarAPI.Persistence.Repositories
             return await _dbSet.CountAsync();
         }
 
+        public async Task<T> GetByFilterAsync(Expression<Func<T, bool>> filter)
+        {
+            return await _dbSet.Where(filter).FirstOrDefaultAsync();
+        }
     }
 }

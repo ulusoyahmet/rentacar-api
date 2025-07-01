@@ -1,10 +1,13 @@
-﻿using System.Text;
+﻿using System.Net.Http.Headers;
+using System.Text;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RentACarAPI.Dto.LocationDtos;
 
 namespace RentACarAPI.WebUI.Areas.Admin.Controllers
 {
+    [Authorize(Roles ="Admin")]
     [Area("Admin")]
     [Route("Admin/[controller]/[action]/{id?}")]
     public class AdminLocationController: Controller
@@ -18,19 +21,29 @@ namespace RentACarAPI.WebUI.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44388/api/Location");
+            var token = User.Claims
+                .FirstOrDefault(x => x.Type == "accessToken")?
+                .Value;
 
-            if (responseMessage.IsSuccessStatusCode)
+            if (token != null)
             {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var client = _httpClientFactory.CreateClient();
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", token);
 
-                var results = JsonConvert.DeserializeObject<List<ResultLocationDto>>(jsonData);
+                var responseMessage = await client.GetAsync("https://localhost:44388/api/Location");
 
-                return View(results);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var jsonData = await responseMessage.Content.ReadAsStringAsync();
+
+                    var results = JsonConvert.DeserializeObject<List<ResultLocationDto>>(jsonData);
+
+                    return View(results);
+                }
             }
 
-            return View(new List<ResultLocationDto>());
+            return View();
         }
 
         [HttpGet]
