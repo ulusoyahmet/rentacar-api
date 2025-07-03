@@ -1,4 +1,5 @@
 ﻿using System.Net.Http.Headers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
@@ -6,6 +7,7 @@ using RentACarAPI.Dto.LocationDtos;
 
 namespace RentACarAPI.WebUI.Controllers
 {
+    [Authorize(Roles = "Member,Admin,Visitor,Manager")]
     public class DefaultController: Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
@@ -41,13 +43,12 @@ namespace RentACarAPI.WebUI.Controllers
             ViewBag.locations = values;
 
             ViewBag.alert = alert;
-            
+
 
             return View();
 
         }
 
-        // In DefaultController.cs
         [HttpPost]
         public IActionResult Index(string book_pick_date,
                                  string book_off_date,
@@ -55,31 +56,12 @@ namespace RentACarAPI.WebUI.Controllers
                                  string time_off,
                                  string locationID)
         {
-            // You can still use TempData for other values if needed
             TempData["book_pick_date"] = book_pick_date;
             TempData["book_off_date"] = book_off_date;
             TempData["time_pick"] = time_pick;
             TempData["time_off"] = time_off;
 
-            // Redirect with the locationID as a route parameter for the 'id' action parameter
             return RedirectToAction("Index", "CarRentingList", new { id = locationID });
         }
-
-        //[HttpPost]
-        //public IActionResult Index(string book_pick_date,
-        //                   string book_off_date,
-        //                   string time_pick,
-        //                   string time_off,
-        //                   string locationID)
-        //{
-        //    return RedirectToAction("Index", "CarRentingList", new
-        //    {
-        //        locationID = locationID,
-        //        book_pick_date = book_pick_date,
-        //        book_off_date = book_off_date,
-        //        time_pick = time_pick,
-        //        time_off = time_off
-        //    });
-        //}
     }
 }

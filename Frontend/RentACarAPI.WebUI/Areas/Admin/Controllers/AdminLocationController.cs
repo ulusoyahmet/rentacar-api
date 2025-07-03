@@ -7,7 +7,7 @@ using RentACarAPI.Dto.LocationDtos;
 
 namespace RentACarAPI.WebUI.Areas.Admin.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    [Authorize(Roles ="Admin,Manager")]
     [Area("Admin")]
     [Route("Admin/[controller]/[action]/{id?}")]
     public class AdminLocationController: Controller
@@ -22,43 +22,29 @@ namespace RentACarAPI.WebUI.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var client = _httpClientFactory.CreateClient();
+            var token = User.Claims
+                .FirstOrDefault(x => x.Type == "accesstoken")?
+                .Value;
 
-            var responseMessage = await client.GetAsync("https://localhost:44388/api/Location");
-
-            if (responseMessage.IsSuccessStatusCode)
+            if (token != null)
             {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var client = _httpClientFactory.CreateClient();
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", token);
 
-                var results = JsonConvert.DeserializeObject<List<ResultLocationDto>>(jsonData);
+                var responseMessage = await client.GetAsync("https://localhost:44388/api/Location");
 
-                return View(results);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var jsonData = await responseMessage.Content.ReadAsStringAsync();
+
+                    var results = JsonConvert.DeserializeObject<List<ResultLocationDto>>(jsonData);
+
+                    return View(results);
+                }
             }
 
             return View();
-            //var token = User.Claims
-            //    .FirstOrDefault(x => x.Type == "accesstoken")?
-            //    .Value;
-
-            //if (token != null)
-            //{
-            //    var client = _httpClientFactory.CreateClient();
-            //    client.DefaultRequestHeaders.Authorization =
-            //        new AuthenticationHeaderValue("Bearer", token);
-
-            //    var responseMessage = await client.GetAsync("https://localhost:44388/api/Location");
-
-            //    if (responseMessage.IsSuccessStatusCode)
-            //    {
-            //        var jsonData = await responseMessage.Content.ReadAsStringAsync();
-
-            //        var results = JsonConvert.DeserializeObject<List<ResultLocationDto>>(jsonData);
-
-            //        return View(results);
-            //    }
-            //}
-
-            //return View();
         }
 
         [HttpGet]
