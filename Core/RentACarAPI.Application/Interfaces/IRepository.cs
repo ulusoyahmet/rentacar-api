@@ -11,7 +11,7 @@ namespace RentACarAPI.Application.Interfaces
         Task UpdateAsync(T entity);
         Task RemoveAsync(T entity);
         Task<int> GetCountAsync();
-        Task<T> GetByFilterAsync(Expression<Func<T, bool>> filter);
+        Task<T?> GetByFilterAsync(Expression<Func<T, bool>> filter);
         Task<List<T>> GetAllWithIncludeAsync(params Expression<Func<T, object>>[] includes);
         Task<List<T>> GetAllWithDeepIncludeAsync(params string[] includeProperties);
         Task<List<T>> GetAllWithExplicitIncludeAsync(Func<IQueryable<T>, IQueryable<T>> includeFunc);

@@ -9,8 +9,8 @@ builder.Services.AddHttpClient();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddCookie(JwtBearerDefaults.AuthenticationScheme, opt =>
     {
-        opt.LoginPath = "/Login/Index";
-        opt.LogoutPath = "/Login/Logout";
+        opt.LoginPath = "/Login/Index/";
+        opt.LogoutPath = "/Login/Logout/";
         opt.AccessDeniedPath = "/Pages/AccessDenied/";
         opt.Cookie.SameSite = SameSiteMode.Strict;
         opt.Cookie.HttpOnly = true;

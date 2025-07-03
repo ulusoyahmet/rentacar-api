@@ -19,7 +19,7 @@ namespace RentACarAPI.WebApi.Controllers
         public async Task<IActionResult> Register(CreateAppUserCommand command)
         {
             await _mediator.Send(command);
-            return Ok($"Welcome <{command.Username}>.");
+            return Ok($"Welcome <{command.Username}>!");
         }
     }
 }

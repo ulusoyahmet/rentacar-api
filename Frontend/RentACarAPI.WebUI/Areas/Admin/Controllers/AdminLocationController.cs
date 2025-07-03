@@ -19,31 +19,46 @@ namespace RentACarAPI.WebUI.Areas.Admin.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
+
         public async Task<IActionResult> Index()
         {
-            var token = User.Claims
-                .FirstOrDefault(x => x.Type == "accessToken")?
-                .Value;
+            var client = _httpClientFactory.CreateClient();
 
-            if (token != null)
+            var responseMessage = await client.GetAsync("https://localhost:44388/api/Location");
+
+            if (responseMessage.IsSuccessStatusCode)
             {
-                var client = _httpClientFactory.CreateClient();
-                client.DefaultRequestHeaders.Authorization =
-                    new AuthenticationHeaderValue("Bearer", token);
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
 
-                var responseMessage = await client.GetAsync("https://localhost:44388/api/Location");
+                var results = JsonConvert.DeserializeObject<List<ResultLocationDto>>(jsonData);
 
-                if (responseMessage.IsSuccessStatusCode)
-                {
-                    var jsonData = await responseMessage.Content.ReadAsStringAsync();
-
-                    var results = JsonConvert.DeserializeObject<List<ResultLocationDto>>(jsonData);
-
-                    return View(results);
-                }
+                return View(results);
             }
 
             return View();
+            //var token = User.Claims
+            //    .FirstOrDefault(x => x.Type == "accesstoken")?
+            //    .Value;
+
+            //if (token != null)
+            //{
+            //    var client = _httpClientFactory.CreateClient();
+            //    client.DefaultRequestHeaders.Authorization =
+            //        new AuthenticationHeaderValue("Bearer", token);
+
+            //    var responseMessage = await client.GetAsync("https://localhost:44388/api/Location");
+
+            //    if (responseMessage.IsSuccessStatusCode)
+            //    {
+            //        var jsonData = await responseMessage.Content.ReadAsStringAsync();
+
+            //        var results = JsonConvert.DeserializeObject<List<ResultLocationDto>>(jsonData);
+
+            //        return View(results);
+            //    }
+            //}
+
+            //return View();
         }
 
         [HttpGet]

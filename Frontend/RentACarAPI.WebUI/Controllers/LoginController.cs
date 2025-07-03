@@ -52,12 +52,12 @@ namespace RentACarAPI.WebUI.Controllers
 
                     if (tokenModel.Token != null)
                     {
-                        claims.Add(new Claim("accessToken", tokenModel.Token));
+                        claims.Add(new Claim("accesstoken", tokenModel.Token));
                         var claimsIdentity = new ClaimsIdentity(claims,
                             JwtBearerDefaults.AuthenticationScheme);
                         var authProps = new AuthenticationProperties()
                         {
-                            ExpiresUtc = tokenModel.ExprireDate,
+                            ExpiresUtc = tokenModel.ExpireDate,
                             IsPersistent = true
                         };
 

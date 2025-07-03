@@ -22,7 +22,7 @@ namespace RentACarAPI.Application.Features.Mediator.Handlers.AppUserHandlers
         {
             var value = new GetCheckedAppUserQueryResult();
             var user = await _userRepository.GetByFilterAsync(x =>
-                x.Username == request.Username && x.Password == x.Password);
+                x.Username == request.Username && x.Password == request.Password);
 
             if (user == null)
             {
@@ -32,8 +32,8 @@ namespace RentACarAPI.Application.Features.Mediator.Handlers.AppUserHandlers
             {
                 value.IsExists = true;
                 value.Username = user.Username;
-                value.Role = (await _roleRepository
-                    .GetByFilterAsync(x => x.AppRoleID == user.AppRoleID)).Name;
+                value.Role = (await _roleRepository.GetByFilterAsync
+                    (x => x.AppRoleID == user.AppRoleID))?.Name ?? "Member";
                 value.ID = user.AppUserID;
             }
 
